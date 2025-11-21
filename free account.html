@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Maroon & Cream Theme</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background: radial-gradient(circle, #800000 0%, #EFECE3 100%); /* Radial gradient from maroon to cream */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Lora', 'Roboto Slab', serif; /* Updated font for body */
+            position: relative; /* Agar tombol home bisa diposisikan absolut */
+        }
+        .register-container {
+            background: #EFECE3; /* Cream background (#EFECE3) */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(128, 0, 0, 0.2); /* Maroon shadow */
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.5s ease-in;
+            position: relative; /* Agar tautan bisa diposisikan relatif terhadap kontainer */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .form-control:focus {
+            border-color: #800000; /* Maroon border */
+            box-shadow: 0 0 0 0.2rem rgba(128, 0, 0, 0.25); /* Maroon glow */
+        }
+        .btn-register {
+            background: #800000; /* Maroon button */
+            border: none;
+            color: #EFECE3; /* Cream text (#EFECE3) */
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .btn-register:hover {
+            background: #660000; /* Darker maroon on hover */
+            transform: translateY(-2px);
+        }
+        .error-message {
+            color: #800000; /* Maroon error text */
+            font-size: 14px;
+            margin-top: 10px;
+            animation: fadeIn 0.3s;
+        }
+        .login-link a {
+            color: #800000; /* Maroon link */
+            text-decoration: none;
+        }
+        .login-link a:hover {
+            text-decoration: underline;
+            color: #660000; /* Darker maroon */
+        }
+        h2 {
+            color: #800000; /* Maroon heading */
+            font-family: 'Playfair Display', 'Roboto Slab', serif; /* Updated font for heading */
+        }
+        .form-label {
+            color: #800000; /* Maroon labels */
+        }
+        /* Gaya untuk tombol Home */
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 9999; /* Agar tombol selalu di atas elemen lain */
+        }
+        .btn-home {
+            background: #EFECE3; /* Warna krem */
+            color: #800000; /* Teks marun */
+            border: 1px solid #800000; /* Border marun */
+            border-radius: 50%; /* Membuat tombol bulat */
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-home:hover {
+            background: #800000; /* Latar marun saat hover */
+            color: #EFECE3; /* Teks krem saat hover */
+            transform: scale(1.05);
+        }
+        /* Gaya untuk tautan Create Free Account */
+        .create-account-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 9998; /* Agar berada di bawah tombol home */
+        }
+        .create-account-link a {
+            color: #800000; /* Maroon text */
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .create-account-link a:hover {
+            color: #660000; /* Darker maroon on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Tombol Home -->
+    <button class="home-button btn btn-outline-none p-0" onclick="goHome()">
+        <i class="bi bi-house-door-fill" style="font-size: 1.5rem;"></i>
+    </button>
+
+    <div class="register-container">
+        <!-- Tautan Create Free Account -->
+        <div class="create-account-link">
+            <a href="free account.html" title="Create Free Account" class="text-base font-medium transition-all duration-200 rounded hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
+                Create Free Account
+            </a>
+        </div>
+
+        <h2 class="text-center mb-4">Create Your Account</h2>
+        <form id="registerForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-register w-100">Create Account</button>
+        </form>
+        <div id="errorMessage" class="error-message text-center" style="display: none;"></div>
+        <div class="login-link text-center mt-3">
+            <a href="login.html">Already have an account? Login here</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Fungsi untuk kembali ke halaman utama
+        function goHome() {
+            window.location.href = "/"; // Ganti dengan URL halaman home Anda jika berbeda, misalnya: "index.html"
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Reset error
+            errorMessage.style.display = 'none';
+            errorMessage.textContent = '';
+            
+            // Validation
+            if (!email || !username || !password || !confirmPassword) {
+                showError('All fields are required.');
+                return;
+            }
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError('Please enter a valid email address.');
+                return;
+            }
+            if (username.length < 3) {
+                showError('Username must be at least 3 characters.');
+                return;
+            }
+            if (password.length < 6) {
+                showError('Password must be at least 6 characters.');
+                return;
+            }
+            if (password !== confirmPassword) {
+                showError('Passwords do not match.');
+                return;
+            }
+            
+            // Simulate registration (replace with API call)
+            alert('Account created successfully! You can now login.');
+            // Redirect ke halaman login
+            window.location.href = 'login.html'; // Ganti dengan path halaman login Anda jika berbeda
+        });
+        
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
